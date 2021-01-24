@@ -1,0 +1,33 @@
+name: YoudaoNote-checkin
+
+on:
+  push:
+  pull_request:
+  fork:
+  watch:
+    types: [ started ]
+  schedule:
+    - cron: 0 */1 * * *
+
+jobs:
+  YoudaoNote-checkin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup-python
+        uses: actions/setup-python@master
+        with:
+          python-version: 3.7
+
+      - name: install-requirement
+        run: |
+          pip3 install requests
+
+      - name: checkin
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          python3 checkin.py
