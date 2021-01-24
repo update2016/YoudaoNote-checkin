@@ -3,6 +3,7 @@ import json
 import time
 import urllib3
 import os
+import hashlib
 
 urllib3.disable_warnings()
 
@@ -14,9 +15,13 @@ password = os.environ['PASSWORD']
 def checkin(username: str, password: str):
     login_url = 'https://note.youdao.com/login/acc/urs/verify/check?app=web&product=YNOTE&tp=urstoken&cf=6&fr=1&systemName=&deviceType=&ru=https%3A%2F%2Fnote.youdao.com%2FsignIn%2F%2FloginCallback.html&er=https%3A%2F%2Fnote.youdao.com%2FsignIn%2F%2FloginCallback.html&vcode=&systemName=mac&deviceType=MacPC&timestamp=1611466345699'
     checkin_url = 'http://note.youdao.com/yws/mapi/user?method=checkin'
+
+    m = hashlib.md5()
+    m.update(password.encode('utf8'))
+
     parame = {
         'username': username,
-        'password': password
+        'password': m.hexdigest(),
     }
 
     s = requests.Session()
