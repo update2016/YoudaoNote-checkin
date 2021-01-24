@@ -1,32 +1,38 @@
 # 有道云笔记签到
 
-一点小羊毛
+一点小羊毛。
 
-通过 github action 来实现自动签到（每天签到可以获得存储空间奖励）
+通过 github action 来实现自动签到（每天签到可以获得存储空间奖励）。
 
-步骤：
+## 步骤
 
-1. 设置用户名（USERNAME）和密码（PASSWORD）
+### 1 fork 这个仓库
 
-   先 fork 这个仓库，在仓库中依次点击 `Settings` - `Secrets` - `New repository secret`，如下图所示
+点击右上角的 fork。
 
-   ![image-20210111220035535](README.assets/image-20210111220035535.png)
+### 2 设置用户名（USERNAME）和密码（PASSWORD）
 
-   然后添加 2 个 secret，分别为 `USERNAME` 和 `PASSWORD`。
+在 fork 后**自己的**仓库中依次点击 `Settings` - `Secrets` - `New repository secret`，如下图所示：
 
-   `USERNAME` 就是签到账号，示例：
+![image-20210111220035535](README.assets/image-20210111220035535.png)
 
-   ```text
-   150********@163.com
-   ```
+然后添加 2 个 secret，分别为 `USERNAME` 和 `PASSWORD`。
 
-   `PASSWORD` 是密码，示例：
+`USERNAME` 就是签到账号，示例：
 
-   ```text
-   123456
-   ```
+```text
+150********@163.com
+```
 
-3. 随便发起一个 push 请求，可以修改一下 `README.md`，或者自己给自己点个 star，就可以开始。之后就会每小时进行一次签到（因为有时候签到会失败，好像是服务器不太好，就设置一下每小时签到一次保证成功吧）。
+`PASSWORD` 是密码，示例：
+
+```text
+123456
+```
+
+### 3 运行
+
+随便发起一个 push 请求，可以修改一下 `README.md`，或者自己给自己点个 star，就可以开始。之后就会每小时进行一次签到（因为有时候签到会失败，好像是服务器不太好，就设置一下每小时签到一次保证成功吧）。
 
 注意：在官方文档中有这么一段
 
