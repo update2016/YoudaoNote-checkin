@@ -22,11 +22,16 @@ def checkin(username: str, password: str):
     }
 
     s = requests.Session()
-    # 登录
-    s.post(url=login_url, data=parame, verify=False)
 
-    # 签到
-    r = s.post(url=checkin_url)
+    try:
+        # 登录
+        s.post(url=login_url, data=parame, verify=False)
+
+        # 签到
+        r = s.post(url=checkin_url)
+    except:
+        print('没连上网')
+        exit()
     print(r.text)
     if r.status_code == 200:
         info = json.loads(r.text)
